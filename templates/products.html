@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products – RL Cosmetics & Perfume</title>
+    <link rel="stylesheet" href="../static/products.css" />
+</head>
+<body>
+    <header>
+        <div class="logo">RL Cosmetics & Perfume</div>
+
+        <!-- Hamburger menu -->
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav">
+            <a href="../index.html">Home</a>
+            <a href="products.html" class="active">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <h1>Our Luxury Collection</h1>
+        <p>Premium scents blended with soft pastel elegance.</p>
+    </section>
+
+    <section class="product-section">
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="../sources/images/CK - 1.png" />
+                <h3>Pastel Glow Perfume</h3>
+                <p class="price">₱899</p>
+                <button class="buy-btn">View Details</button>
+            </div>
+
+            <div class="product-card">
+                <img src="../sources/images/H- Go Boss.png" />
+                <h3>Golden Luxe Mist</h3>
+                <p class="price">₱1,299</p>
+                <button class="buy-btn">View Details</button>
+            </div>
+
+            <div class="product-card">
+                <img src="../sources/images/J-Malone Peony.png" />
+                <h3>Soft Petal Dream</h3>
+                <p class="price">₱749</p>
+                <button class="buy-btn">View Details</button>
+            </div>
+
+            <div class="product-card">
+                <img src="../sources/images/Lady Million.png" />
+                <h3>Blush Blossom Essence</h3>
+                <p class="price">₱999</p>
+                <button class="buy-btn">View Details</button>
+            </div>
+
+            <div class="product-card">
+                <img src="../sources/images/Prda Candy Love.png" />
+                <h3>Pastel Sunrise Elixir</h3>
+                <p class="price">₱1,199</p>
+                <button class="buy-btn">View Details</button>
+            </div>
+        </div>
+    </section>
+
+        <!-- Product Modal -->
+        <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+            <img id="modal-img" src="" alt="Product Image">
+            <div class="modal-info">
+                <h3 id="modal-title">Product Name</h3>
+                <p id="modal-price">₱0.00</p>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="modal-quantity" value="1" min="1">
+                <p id="modal-total">Total: ₱0.00</p>
+                <div class="modal-buttons">
+                <button id="add-cart" class="btn">Add to Cart</button>
+                <button id="buy-now" class="btn">Buy Now</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+    <footer>
+        © 2025 RL Cosmetics & Perfume. All Rights Reserved.
+    </footer>
+
+    <script>
+        const toggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            toggle.classList.toggle("open");
+        });
+
+        // Select modal elements
+        const modal = document.getElementById('product-modal');
+        const closeModal = document.querySelector('.modal .close');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalPrice = document.getElementById('modal-price');
+        const modalQuantity = document.getElementById('modal-quantity');
+        const modalTotal = document.getElementById('modal-total');
+        const addCartBtn = document.getElementById('add-cart');
+        const buyNowBtn = document.getElementById('buy-now');
+
+        let currentPrice = 0;
+
+        // Open modal for any product card
+        function attachModalEvents() {
+        const productButtons = document.querySelectorAll('.product-card .buy-btn');
+        productButtons.forEach(btn => {
+            btn.onclick = (e) => {
+            const card = e.target.closest('.product-card');
+            const imgSrc = card.querySelector('img').src;
+            const title = card.querySelector('h3').innerText;
+            const priceText = card.querySelector('.price').innerText.replace('₱','').replace(/,/g,'');
+            currentPrice = parseFloat(priceText);
+
+            modalImg.src = imgSrc;
+            modalTitle.innerText = title;
+            modalPrice.innerText = `₱${currentPrice.toFixed(2)}`;
+            modalQuantity.value = 1;
+            modalTotal.innerText = `Total: ₱${currentPrice.toFixed(2)}`;
+
+            modal.style.display = 'flex';
+            };
+        });
+        }
+
+        // Initial attachment
+        attachModalEvents();
+
+        // Close modal
+        closeModal.onclick = () => modal.style.display = 'none';
+        window.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
+
+        // Update total on quantity change
+        modalQuantity.addEventListener('input', () => {
+        let qty = parseInt(modalQuantity.value) || 1;
+        modalTotal.innerText = `Total: ₱${(currentPrice * qty).toFixed(2)}`;
+        });
+
+        // Add to Cart action
+        addCartBtn.addEventListener('click', () => {
+        alert(`${modalQuantity.value} x ${modalTitle.innerText} added to cart!`);
+        modal.style.display = 'none';
+        });
+
+        // Buy Now action
+        buyNowBtn.addEventListener('click', () => {
+        alert(`Purchasing ${modalQuantity.value} x ${modalTitle.innerText} for ₱${(currentPrice * modalQuantity.value).toFixed(2)}`);
+        modal.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

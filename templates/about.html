@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="../static/about.css" />
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">RL Cosmetics & Perfume</div>
+
+        <!-- Hamburger menu -->
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav">
+            <a href="../index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="about-container">
+
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-text">
+                <h1>About Our Store</h1>
+                <p>Your trusted source for quality products at the best prices.</p>
+            </div>
+            <img src="../sources/images/perfumes.jpg" alt="Store Image" />
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <p>
+                To deliver affordable, high‑quality items with fast and safe delivery while
+                maintaining transparency and trust with all our customers.
+            </p>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-grid">
+            <div class="value-box">
+                <h3>Wide Variety of Products</h3>
+                <p>Explore our wide selection of carefully curated products.</p>
+            </div>
+            <div class="value-box">
+                <h3>Secure Payment Options</h3>
+                <p>Shop with confidence using our secure and trusted payment methods.</p>
+            </div>
+            <div class="value-box">
+                <h3>Fast & Reliable Delivery</h3>
+                <p>Receive your orders quickly and safely at your doorstep.</p>
+            </div>
+            <div class="value-box">
+                <h3>Responsive Customer Support</h3>
+                <p>Our team is always ready to assist with your queries and concerns.</p>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../sources/images/CK - 1.png" alt="RL Perfume CK-1" />
+                    <h4>Jane Smith</h4>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-card">
+                    <img src="../sources/images/H- Go Boss.png" alt="RL Perfume H-Go Boss" />
+                    <h4>John Doe</h4>
+                    <p>Head of Operations</p>
+                </div>
+                <div class="team-card">
+                    <img src="../static/images/team3.jpg" alt="Team Member 3" />
+                    <h4>Emily Rose</h4>
+                    <p>Marketing Lead</p>
+                </div>
+                <div class="team-card">
+                    <img src="../static/images/team4.jpg" alt="Team Member 4" />
+                    <h4>Michael Lee</h4>
+                    <p>Customer Support</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        © 2025 RL Cosmetics & Perfume. All Rights Reserved.
+    </footer>
+
+
+    <script>
+        const toggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            toggle.classList.toggle("open");
+        });
+    </script>
+</body>
+</html>

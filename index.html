@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RL Cosmetics & Perfume</title>
+    <link rel="stylesheet" href="static/index.css" />
+</head>
+<body>
+
+    <header>
+        <div class="logo">RL Cosmetics & Perfume</div>
+
+        <!-- Hamburger menu icon -->
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="templates/products.html">Products</a>
+            <a href="templates/about.html">About</a>
+            <a href="templates/contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Elegance in Every Scent</h1>
+            <p>Where luxury gold meets soft pastel beauty.</p>
+            <button class="cta-btn" onclick="window.location.href='templates/products.html'">
+                Shop Now
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">Featured Collection</h2>
+
+    <div class="product-grid" id="products">
+        <div class="product">
+            <img src="sources/images/Burbry Weeknd.png" />
+            <h3>Burbry Weeknd Perfume</h3>
+            <p>₱899</p>
+        </div>
+
+        <div class="product">
+            <img src="sources/images/CH + Good Girl.png" />
+            <h3>CH + Good Girl Perfume</h3>
+            <p>₱1,299</p>
+        </div>
+
+        <div class="product">
+            <img src="sources/images/CH- Bad Boy.png" />
+            <h3>CH - Bad Boy</h3>
+            <p>₱749</p>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 RL Cosmetics & Perfume. All Rights Reserved.
+    </footer>
+
+  <script>
+        // Toggle mobile menu
+        const toggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            toggle.classList.toggle("open");
+    });
+  </script>
+
+</body>
+</html>

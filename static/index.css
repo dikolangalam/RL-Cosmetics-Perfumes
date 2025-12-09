@@ -1,0 +1,303 @@
+/* ===============================
+   Global Styles
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #f7f3e8;
+    color: #333;
+    overflow-x: hidden; /* prevents horizontal scroll */
+}
+
+/* ==============================
+   Header / Navbar (System-wide)
+============================== */
+header {
+    width: 100%;
+    padding: 20px 10%;
+    background: #fffdf8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+header .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #d4af37;
+}
+
+header nav {
+    display: flex;
+    gap: 25px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s, transform 0.2s;
+}
+
+header nav a.active {
+    color: #d4af37;
+    font-weight: 700;
+}
+
+header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: #d4af37;
+    transition: 0.3s;
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
+header nav a:hover {
+    color: #d4af37;
+    transform: scale(1.05);
+}
+
+/* ==============================
+   Hamburger Menu (Mobile)
+=============================== */
+.menu-toggle {
+    display: none; /* hidden on desktop */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 11;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ==============================
+   Responsive Navbar
+=============================== */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    header nav {
+        display: none; /* hide links initially on mobile */
+        flex-direction: column;
+        gap: 15px;
+        background: #fffdf8;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex; /* show hamburger on mobile */
+    }
+
+    nav a {
+        margin-left: 0; /* reset margin for mobile vertical layout */
+    }
+}
+
+
+/* ===============================
+   Hero Section
+================================ */
+.hero {
+    height: 88vh;
+    min-height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    background: url('../sources/images/background.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45));
+    pointer-events: none;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    padding: 0 24px;
+}
+
+.hero-text h1 {
+    font-size: clamp(32px, 5.5vw, 60px);
+    color: #d4af37;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+.hero-text p {
+    font-size: clamp(14px, 1.6vw, 20px);
+    color: #f1e7c8;
+    margin-top: 4px;
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+/* CTA button */
+.cta-btn {
+    margin-top: 16px;
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #d4af37, #f7e9ff);
+    color: #111;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.32);
+}
+
+/* ===============================
+   Product Section
+================================ */
+.section-title {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 32px;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 40px 80px;
+}
+
+.product {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid rgba(212,175,55,0.08);
+}
+
+.product:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+}
+
+.product img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fbf8f5;
+}
+
+.product h3 {
+    margin-top: 14px;
+    font-size: 18px;
+    color: #333;
+}
+
+.product p {
+    font-size: 18px;
+    color: #d4af37;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+/* ===============================
+   Footer
+================================ */
+footer {
+    margin-top: 60px;
+    padding: 25px;
+    text-align: center;
+    background: #fff;
+    color: #666;
+    border-top: 1px solid #eee;
+}
+
+/* ===============================
+   Responsive Design
+================================ */
+
+
+@media (max-width: 768px) {
+    .hero {
+        height: 68vh;
+        padding: 0 16px;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(28px, 7vw, 42px);
+    }
+
+    .product-grid {
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-text p { font-size: 14px; }
+    .cta-btn { padding: 10px 22px; font-size: 16px; }
+}
